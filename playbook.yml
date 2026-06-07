@@ -1,0 +1,27 @@
+---
+- name: Konfiguracja serwera WWW
+  hosts: all
+  become: true
+  tasks:
+    - name: Aktualizacja bazy pakietów apt
+      apt:
+        update_cache: yes
+
+    - name: Instalacja serwera Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Uruchomienie uslugi Apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Podmiana pliku index.html
+      copy:
+        src: ./index.html
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
