@@ -87,7 +87,7 @@ resource "azurerm_network_interface_security_group_association" "nic_nsg" {
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
-  name                = "lab10_zaliczenie"
+  name                = "lab10Zaliczenie"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "Standard_B2ats_v2"
